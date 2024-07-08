@@ -74,15 +74,16 @@ The following are outcomes that this document seeks to achieve:
 
 **Certificate System**: A system used by a CA or Delegated Third Party to access, process, or manage data or provide services related to:
 
-   1. identity validation;
-   2. identity authentication;
-   3. account registration;
-   4. certificate application;
-   5. certificate approval;
-   6. certificate issuance;
-   7. certificate revocation;
-   8. authoritative certificate status; or
-   9. key escrow.
+   1.  identity validation;
+   2.  identity authentication;
+   3.  account registration;
+   4.  certificate application;
+   5.  certificate validation;
+   7.  certificate approval;
+   7.  certificate issuance;
+   8.  certificate revocation;
+   9.  authoritative certificate status; or
+   10. key escrow.
 
 **Common Vulnerability Scoring System (CVSS)**: A quantitative model used to measure the base level severity of a vulnerability (see <http://nvd.nist.gov/vuln-metrics/cvss>).
 
@@ -457,37 +458,71 @@ The CA SHOULD ensure incident response plans minimally include:
    2. containment of the incident to minimize further impact; and
    3. identification and mitigation or eradication of the incident root cause(s).
 
-### 4. Vulnerability Detection and Patch Management
+### 4. Vulnerability Management
 
-Certification Authorities and Delegated Third Parties SHALL:
+The CA MUST minimally implement the policies and procedures in this Section for identifying, evaluating, and resolving security vulnerabilities.
 
-a. Implement intrusion detection and prevention controls under the control of CA or Delegated Third Party Trusted Roles to protect Certificate Systems against common network and system threats;
+These policies and procedures MUST apply to all Certificate Systems.
 
-b. Document and follow a vulnerability correction process that addresses the identification, review, response, and remediation of vulnerabilities;
+These policies and procedures SHOULD apply to Security Support Systems.
 
-c. Undergo or perform a Vulnerability Scan
+#### 4.1 Inventory of Certificate Systems
 
-   1. within one (1) week of receiving a request from the CA/Browser Forum,
-   2. after any system or network changes that the CA determines are significant, and
-   3. at least every three (3) months, on public and private IP addresses identified by the CA or Delegated Third Party as the CA’s or Delegated Third Party’s Certificate Systems;
+The CA MUST define an inventory of Certificate Systems.
 
-d. Undergo a Penetration Test on the CA’s and each Delegated Third Party’s Certificate Systems on at least an annual basis and after infrastructure or application upgrades or modifications that the CA determines are significant;
+#### 4.2 Vulnerability management timeframe
 
-e. Record evidence that each Vulnerability Scan and Penetration Test was performed by a person or entity (or collective group thereof) with the skills, tools, proficiency, code of ethics, and independence necessary to provide a reliable Vulnerability Scan or Penetration Test; and
+The CA MUST establish a timeframe for responding to and remediating critical and non-critical vulnerabilities.
+This timeframe MUST be established based on a risk assessment performed by the CA.
+The risk assessment MUST be based on a documented security analysis.
+The security analysis SHOULD take into account and address the following principles:
 
-f. Do one of the following within ninety-six (96) hours of discovery of a Critical Vulnerability not previously addressed by the CA’s vulnerability correction process:
+* criticality of assets;
+* maintaining confidentiality, integrity, and availability of assets;
+* risk tolerance;
+* regulatory requirements;
+* likelihood and impact of exploitation;
+* dependencies and interdependencies;
+* remediation resource requirements;
+* historical data; and
+* present threat landscape.
 
-   1. Remediate the Critical Vulnerability;
-   2. If remediation of the Critical Vulnerability within ninety-six (96) hours is not possible, create and implement a plan to mitigate the Critical Vulnerability, giving priority to
+The CA MUST ensure critical and non-critical vulnerabilities are responded to and remediated in accordance with their established timeframe.
 
-      i. vulnerabilities with high CVSS scores, starting with the vulnerabilities the CA determines are the most critical (such as those with a CVSS score of 10.0) and
-      ii. systems that lack sufficient compensating controls that, if the vulnerability were left unmitigated, would allow external system control, code execution, privilege escalation, or system compromise; or
+The CA MUST document in their Certificate Policy and/or Certification Practices Statement the timeframe established for responding to and remediating critical and non-critical vulnerabilities.
 
-   3. Document the factual basis for the CA’s determination that the vulnerability does not require remediation because
+#### 4.3 Intrusion Detection and Prevention
 
-      i. the CA disagrees with the NVD rating,
-      ii. the identification is a false positive,
-      iii. the exploit of the vulnerability is prevented by compensating controls or an absence of threats; or
-      iv. other similar reasons.
+Intrusion detection and prevention controls MUST protect the inventory of Certificate Systems against common network and system threats.
 
-g. Apply recommended security patches to Certificate Systems within six (6) months of the security patch's availability, unless the CA documents that the security patch would introduce additional vulnerabilities or instabilities that outweigh the benefits of applying the security patch.
+Some common network and system threats include, but are not limited to:
+
+* malicious software;
+* phishing and social engineering;
+* denial of service;
+* unauthorized access; and
+* malicious data injection.
+
+#### 4.4 Vulnerability Correction
+
+The CA MUST document and follow a vulnerability correction process.
+
+A documented vulnerability correction process MUST minimally be comprised of:  
+
+   1. periodic vulnerability scanning;
+   2. identification;
+   3. review;
+   4. response; and
+   5. remediation  (i.e. vulnerabilities are tracked to ensure their remediation is completed within a defined timeframe).
+
+#### 4.5 Penetration Testing
+
+The CA MUST define and follow a program for performing penetration tests.
+
+A defined program for performing penetration tests MUST minimally ensure that:
+
+   1. penetration tests are performed:
+      * at least on an annual basis; and
+      * after infrastructure or application changes that are organizationally defined as significant; and
+   2. penetration tests are performed by a person or entity (or collective group thereof) with the requisite skills, tools, proficiency, code of ethics, and independence; and
+   3. vulnerabilities identified during the penetration test are remediated using the vulnerability correction process in [Section 4.4](#44-vulnerability-correction).
